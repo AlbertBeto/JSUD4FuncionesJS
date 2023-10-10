@@ -18,8 +18,10 @@ function cuadrado(a){ //Devolver el cuadrado del número pasado
     return a*a;
     }
 }
+imprimirpantalla("Creo una función para realizar cuadrados.");
+$cuadrado = 12;
 
-document.write(cuadrado(5));
+document.write("Este es el resultado del cuadrado de "+$cuadrado+ " = "+cuadrado($cuadrado));
 
 /*
 function factorial(a,b){
@@ -43,16 +45,26 @@ final=b;
     //fin factorial
 }
 */
+document.write("<br>")
+
 //Factorial en recursivo
+imprimirpantalla("Creo una variable para hacer factorial de manera recursiva.");
 function factorial(b){
     if(b<=0){return 1;}else{
     return b*factorial(b-1);}
 }
 
-document.write(factorial(2));
+$factor=10;
 
-function imprimir(cadena){
-    console.log("Me has pasado la cadena "+cadena)
+document.write("Este es el factorial de "+$factor+" = "+factorial($factor));
+document.write("<br>")
+imprimirpantalla("Creo un par de funciones para imprimir en pantalla y en consola.")
+
+function imprimirpantalla(cadena){
+    document.write("<br>"+cadena+"<br>")
 }
+function imprimir(cadena){
+    document.write("<br>"+"Me has pasado la cadena "+cadena+"<br>")
+}
+document.write("<br>")
 
-imprimir
