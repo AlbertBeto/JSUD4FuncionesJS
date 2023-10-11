@@ -1,5 +1,5 @@
 // document.write (parseInt("16XX3U")) //Devuelve el numero 16. y PQ??!! Pq js hace lo q puede
-
+/*
 function cuadrado(a){ //Devolver el cuadrado del número pasado
    /* Mi codigo
     if(isNaN(a)){
@@ -8,7 +8,7 @@ function cuadrado(a){ //Devolver el cuadrado del número pasado
     return document.write(a*a);}
     }
     */
-
+/*
     //codigo profe
     if(typeof a !="number"){
         return "No es un número";
@@ -22,7 +22,7 @@ imprimirpantalla("Creo una función para realizar cuadrados.");
 $cuadrado = 12;
 
 document.write("Este es el resultado del cuadrado de "+$cuadrado+ " = "+cuadrado($cuadrado));
-
+*/
 /*
 function factorial(a,b){
 factorialint=a;
@@ -45,6 +45,8 @@ final=b;
     //fin factorial
 }
 */
+
+/*
 document.write("<br>")
 
 //Factorial en recursivo
@@ -67,4 +69,36 @@ function imprimir(cadena){
     document.write("<br>"+"Me has pasado la cadena "+cadena+"<br>")
 }
 document.write("<br>")
+*/
+/*
+//Nuevas funciones anonimas
+function prueba(parametro){
+    console.log(parametro);
+    return(10);
+};
+//prueba("Soy Jose Juan");
+let a = 1;
+a=prueba;
+
+let c=function(mensaje){
+    console.log(mensaje);
+}
+
+let b=function(f,parametro){
+    return f(parametro)
+}
+
+b(a(),"Hola"); //Esto es un error ya que a() es el resultado de la funcion en este caso 10
+b(a,"Hola"); // Este es correcto ya que le pasamos a que es la funcion. 
+*/
+
+//Funciones Lambda
+
+// let f =function(a,b){ return a*b};
+//En lambda sería si solo tuviese una linea de accion. 
+let f=(a,b)=>a*b; 
+//Si fuese un solo parametro te puedes ahorrar los parentesis
+let g=a=>a*a;
+let h=a=>{a++; return g(a)}
+
 
