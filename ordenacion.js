@@ -29,3 +29,19 @@ let personas=[
     ["Fermín",64, "Estudiante"],
     ["Jose",47, "Profesor"]
 ];
+
+//console.log(personas);
+//console.log(personas.sort());
+console.log(
+    personas.sort((a,b)=>{
+        if(b[1]-a[1]== 0){
+            if(a[0]<b[0]){
+                return 1;
+            }else if(a[0]>b[0]){
+                return -1;
+            }else{
+                return 0;
+       }
+    }else {return b[1]-a[1]}})
+
+);
