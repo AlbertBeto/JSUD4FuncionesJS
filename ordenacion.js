@@ -34,6 +34,68 @@ let personas=[
 //console.log(personas.sort());
 console.log(
     personas.sort((a,b)=>{
+
+        if(valorcargo(b[3])>valorCargo(a[3])){
+            if(b[1]-a[1]== 0){
+                if(a[0]<b[0]){
+                    return 1;
+                }else if(a[0]>b[0]){
+                    return -1;
+                }else{
+                    return 0;
+                }
+            }else {return b[1]-a[1]}
+        }else if(b[3]=="Administrativo"){
+            if(b[1]-a[1]== 0){
+                if(a[0]<b[0]){
+                    return 1;
+                }else if(a[0]>b[0]){
+                    return -1;
+                }else{
+                    return 0;
+                }
+            }else {return b[1]-a[1]}
+        }else if (b[3]=="Estudiante"){
+            if(b[1]-a[1]== 0){
+                if(a[0]<b[0]){
+                    return 1;
+                }else if(a[0]>b[0]){
+                    return -1;
+                }else{
+                    return 0;
+                }
+            }else {return b[1]-a[1]}
+        }  }  
+));
+
+function valorCargo(a){
+    if(a=="Profesor"){
+        return 100;
+    }else if(a=="Administrativo"){
+        return 0;
+    }else{
+        return -1;
+    }
+}
+
+console.log(personas.sort((a,b)=>{
+    if(b[1]-a[1]== 0){
+        if(a[0]<b[0]){
+            return 1;
+        }else if(a[0]>b[0]){
+            return -1;
+        }else{
+            return 0;
+   }
+}else {return b[1]-a[1]}}
+));
+
+
+
+/*
+//ESto funciona ordenando solo por fecha y luego por nombre
+console.log(
+    personas.sort((a,b)=>{
         if(b[1]-a[1]== 0){
             if(a[0]<b[0]){
                 return 1;
@@ -45,3 +107,4 @@ console.log(
     }else {return b[1]-a[1]}})
 
 );
+*/
