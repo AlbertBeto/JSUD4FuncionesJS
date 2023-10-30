@@ -30,81 +30,40 @@ let personas=[
     ["Jose",47, "Profesor"]
 ];
 
-//console.log(personas);
-//console.log(personas.sort());
-console.log(
-    personas.sort((a,b)=>{
+//Primero confirmamos el orden del tercer puesto del array, que al ser un string
+//le damos valor de prioridad utilizando una función creada más abajo. 
+//Una vez organizado por este tercer valor empezamos a organizar los que son iguales
+//Que primero miran la segunda posición y ordenan  por valor numerico y por último los que
+//son iguales los ordena por valor alfabetico.
 
-        if(valorcargo(b[3])>valorCargo(a[3])){
+console.log(
+    personas.sort((a,b)=>{ 
+        if(valorCargo(b[2])>valorCargo(a[2])){
+            return 1;
+        }else if(valorCargo(b[2])==valorCargo(a[2])){
             if(b[1]-a[1]== 0){
-                if(a[0]<b[0]){
+                if(a[0]>b[0]){
                     return 1;
-                }else if(a[0]>b[0]){
+                }else if(a[0]<b[0]){
                     return -1;
                 }else{
                     return 0;
                 }
             }else {return b[1]-a[1]}
-        }else if(b[3]=="Administrativo"){
-            if(b[1]-a[1]== 0){
-                if(a[0]<b[0]){
-                    return 1;
-                }else if(a[0]>b[0]){
-                    return -1;
-                }else{
-                    return 0;
-                }
-            }else {return b[1]-a[1]}
-        }else if (b[3]=="Estudiante"){
-            if(b[1]-a[1]== 0){
-                if(a[0]<b[0]){
-                    return 1;
-                }else if(a[0]>b[0]){
-                    return -1;
-                }else{
-                    return 0;
-                }
-            }else {return b[1]-a[1]}
+        }else if (valorCargo(b[2])<valorCargo(a[2])){
+           return -1
         }  }  
 ));
 
+//En esta función le damos un valor operable a las diferentes opciones de texto. 
+//Ya que sin este valor y al no tener otras caracteristicas diferenciadoras 
+// en el orden que queremos, hay que generar el orden artificialmente.  
 function valorCargo(a){
     if(a=="Profesor"){
-        return 100;
+        return 1;
     }else if(a=="Administrativo"){
         return 0;
-    }else{
+    }else if(a=="Estudiante"){
         return -1;
     }
 }
-
-console.log(personas.sort((a,b)=>{
-    if(b[1]-a[1]== 0){
-        if(a[0]<b[0]){
-            return 1;
-        }else if(a[0]>b[0]){
-            return -1;
-        }else{
-            return 0;
-   }
-}else {return b[1]-a[1]}}
-));
-
-
-
-/*
-//ESto funciona ordenando solo por fecha y luego por nombre
-console.log(
-    personas.sort((a,b)=>{
-        if(b[1]-a[1]== 0){
-            if(a[0]<b[0]){
-                return 1;
-            }else if(a[0]>b[0]){
-                return -1;
-            }else{
-                return 0;
-       }
-    }else {return b[1]-a[1]}})
-
-);
-*/
