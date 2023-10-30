@@ -1,3 +1,4 @@
+//ALUMNO: ALBERT PÉREZ BALEYTO
 let personajes=[
 		{
 			"name": "Luke Skywalker",
