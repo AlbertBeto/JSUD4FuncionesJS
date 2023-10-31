@@ -1895,12 +1895,16 @@ let personajes=[
         }
     ];
 
+let page=0;
+let bajo=page*9;
+let alto=page+8;
+
 for(let card of personajes){
 document.write(
-'<div class="col-sm-4"><h3>'+card.name+'</h3><p>Altura:'+card.height+'</p><p>Peso: '+card.mass+'</p><p>Color pelo: '+card.hair_color+'</p><p>Color piel: '+card.skin_color+'</p><p>Color ojos: '+card.eye_color+'</p><p>Fecha nacimiento: '+card.birth_year+'</p><p>Genero: '+card.gender+'</p><p>Mundo natal: '+card.homeworld+'</p><p>Peliculas: '+card.films+'</p><p>Especie: '+card.species+'</p><p>Vehiculos: '+card.vehicles+'</p><p>Naves espacialies: '+card.starships+'</p></div>'
-)
-}
-
+'<div class="col-sm-4"><h3>'+card.name+'</h3><p>Altura:'+card.height+'</p><p>Peso: '+card.mass+'</p><p>Color pelo: '+card.hair_color+'</p><p>Color piel: '+card.skin_color+'</p><p>Color ojos: '+card.eye_color+'</p><p>Fecha nacimiento: '+card.birth_year+'</p><p>Genero: '+card.gender+'</p><p>Mundo natal: <a href="'+card.homeworld+'">'+card.homeworld+'</a></p><p>Peliculas: <a href="'+card.films+'">'+card.films+'</a></p><p>Especie: '+card.species+'</p><p>Vehiculos: '+card.vehicles+'</p><p>Naves espacialies: '+card.starships+'</p></div>'
+);
+};
+document.write('<div class="col-sm-4"><h3>Personajes del '+(bajo+1)+' al '+(alto+1)+'</h3><p><a href="personajes-sw.js?page='+if(page-1<1){page=0}else{page-1}+'">siguientes...</a></p><p><a href="personajes-sw.js?page='+(page+1)+'">anteriores...</a></p></div>');
 
 
 
