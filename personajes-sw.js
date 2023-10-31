@@ -1895,6 +1895,28 @@ let personajes=[
         }
     ];
 
+for(let card of personajes){
+document.write(
+'<div class="col-sm-4"><h3>'+card.name+'</h3><p>Altura:'+card.height+'</p></div>'
+              /*  <p>Peso: 77</p>
+                <p>Color pelo: </p>
+                <p>Color piel: </p>
+                <p>Color ojos: </p>
+                <p>Fecha nacimiento: </p>
+                <p>Genero: </p>
+                <p>Mundo natal: </p>
+                <p>Peliculas: </p>
+                <p>Especie: </p>
+                <p>Vehiculos: </p>
+                <p>Naves espacialies: </p>
+                
+            </div>*/
+)
+}
+
+
+
+
 console.log(personajes.length);
 
 console.log(personajes[0]["name"]);
