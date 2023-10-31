@@ -1897,20 +1897,7 @@ let personajes=[
 
 for(let card of personajes){
 document.write(
-'<div class="col-sm-4"><h3>'+card.name+'</h3><p>Altura:'+card.height+'</p></div>'
-              /*  <p>Peso: 77</p>
-                <p>Color pelo: </p>
-                <p>Color piel: </p>
-                <p>Color ojos: </p>
-                <p>Fecha nacimiento: </p>
-                <p>Genero: </p>
-                <p>Mundo natal: </p>
-                <p>Peliculas: </p>
-                <p>Especie: </p>
-                <p>Vehiculos: </p>
-                <p>Naves espacialies: </p>
-                
-            </div>*/
+'<div class="col-sm-4"><h3>'+card.name+'</h3><p>Altura:'+card.height+'</p><p>Peso: '+card.mass+'</p><p>Color pelo: '+card.hair_color+'</p><p>Color piel: '+card.skin_color+'</p><p>Color ojos: '+card.eye_color+'</p><p>Fecha nacimiento: '+card.birth_year+'</p><p>Genero: '+card.gender+'</p><p>Mundo natal: '+card.homeworld+'</p><p>Peliculas: '+card.films+'</p><p>Especie: '+card.species+'</p><p>Vehiculos: '+card.vehicles+'</p><p>Naves espacialies: '+card.starships+'</p></div>'
 )
 }
 
