@@ -1895,52 +1895,88 @@ let personajes=[
         }
     ];
 
+    //Con esta función recuperamos el parametro de pagina en la que estamos leyendo la url
 function saberPagina(){
     const parametro = window.location.search.substring(8);
     return parametro ?  parseInt (parametro): 0;   
 }
 
+//Con esta función recuperamos el parametro de genero seleccionado que estamos leyendo de la url
+function saberGenero(){
+    const parametro = window.location.search.substring(17);
+    return parametro ?  parametro: "todos";  
+}
 
-let page=saberPagina();
-let bajo=page*9;
-let alto=page*9+8;
+//Aqui creo una variable independiente que podemos modificar con let y que sea independiente del array original personajes,
+let misPersonajes = [...personajes];
 
-for(let card = bajo; card <= alto && card < personajes.length;card++){
+//Aqui tenemos unas variable iniciales para controlar la pagina actual y que fichas mostramos. 
+const page=saberPagina();
+const bajo=page*9;
+const alto=page*9+8;
+
+//Variable que almacena en que genero estamos. 
+let genero=saberGenero();
+
+//Funcion para sabe la pagina maxima a la que podemos llegar segun array entregado.
+function maximoPaginas(listado){
+return parseInt(listado.length/9)
+};
+
+//Aquí tenemos un pack de funciones que lo que hacen es modificar el valor de la variable genero y devuelve su valor. 
+function generoMale(){
+    var genero="male";
+    return genero;
+}
+
+function generoFemale(){
+    var genero="female";
+    return genero;
+}
+
+function generoRobot(){
+    var genero="n/a";
+    return genero;
+}
+
+function generoTodos(){
+    var genero="todos";
+    return genero;
+}
+
+function generoHema(){
+    var genero="hermaphrodite";
+    return genero;
+}
+
+//Esta función es para ver si hay que usar el array general o el array modificado por genero. 
+function arrayQueToca(){
+    genero==="todos" ? misPersonajes=personajes : misPersonajes=arrayReducida();
+    
+}
+
+//Función para reducir el array principal según la variable genero y devolver un nuevo array. 
+function arrayReducida(){
+    return personajes.reduce((acumulador, personaje)=>{
+        if (personaje.gender === genero){
+            acumulador.push(personaje);
+        } 
+        return acumulador
+    },[]);
+}
+
+//En este paso lanzo la función para que según el genero actual de la web marque el array a usar a continuación.
+arrayQueToca();
+
+//For que recorre el array previamente seleccionado y crea las tarjetas de cada personaje
+for(let card = bajo; card <= alto && card < misPersonajes.length;card++){
     document.write(
-    '<div class="col-sm-4" style=" width: 33,3333%"><h3>'+personajes[card].name+'</h3><p>Altura:'+personajes[card].height+'</p><p>Peso: '+personajes[card].mass+'</p><p>Color pelo: '+personajes[card].hair_color+'</p><p>Color piel: '+personajes[card].skin_color+'</p><p>Color ojos: '+personajes[card].eye_color+'</p><p>Fecha nacimiento: '+personajes[card].birth_year+'</p><p>Genero: '+personajes[card].gender+'</p><p>Mundo natal: <a href="'+personajes[card].homeworld+'">'+personajes[card].homeworld+'</a></p><p>Peliculas: <a href="'+personajes[card].films+'">'+personajes[card].films+'</a></p><p>Especie: '+personajes[card].species+'</p><p>Vehiculos: '+personajes[card].vehicles+'</p><p>Naves espacialies: '+personajes[card].starships+'</p></div>'
+    '<div class="col-sm-4" style=" width: 33,3333%"><h3>'+misPersonajes[card].name+'</h3><p>Altura:'+misPersonajes[card].height+'</p><p>Peso: '+misPersonajes[card].mass+'</p><p>Color pelo: '+misPersonajes[card].hair_color+'</p><p>Color piel: '+misPersonajes[card].skin_color+'</p><p>Color ojos: '+misPersonajes[card].eye_color+'</p><p>Fecha nacimiento: '+misPersonajes[card].birth_year+'</p><p>Genero: '+misPersonajes[card].gender+'</p><p>Mundo natal: <a href="'+misPersonajes[card].homeworld+'">'+misPersonajes[card].homeworld+'</a></p><p>Peliculas: <a href="'+misPersonajes[card].films+'">'+misPersonajes[card].films+'</a></p><p>Especie: '+misPersonajes[card].species+'</p><p>Vehiculos: '+misPersonajes[card].vehicles+'</p><p>Naves espacialies: '+misPersonajes[card].starships+'</p></div>'
     );
 };
 
-document.write('<div class="col-sm-4" style=" width: 33,3333%"><h3>Personajes del '+ (bajo+1) +' al '+ (alto+1) +'</h3><p><a href="personajesSW.html?PAGINA='+ ((page+1)> 9 ? 9 : page+1) +'">siguientes...</a></p><p><a href="personajesSW.html?PAGINA='+ ((page-1)< 0 ? 0 : page-1) +'">anteriores...</a></p></div>');   
+//Impresión de HTML para pasar las paginas con js para limitar las paginas maximas y minimas. 
+document.write('<div class="col-sm-4" style=" "><h3>Personajes del '+ (bajo+1) +' al '+ (alto+1) +'</h3><p><a href="personajesSW.html?PAGINA='+ ((page+1)> maximoPaginas(misPersonajes) ? maximoPaginas(misPersonajes) : page+1) +',GENERO='+ genero +'">siguientes...</a></p><p><a href="personajesSW.html?PAGINA='+ ((page-1)< 0 ? 0 : page-1) +',GENERO='+ genero +'">anteriores...</a></p></div>');   
+//Impresion de HTML para modificar el genero y al final tenemos un visible/invisible de link de genero todos segun si el genero no es todos.
+document.write('<div class="col-sm-4" style="margin-left 15px "><h3>Géneros</h3><p><a href="personajesSW.html?PAGINA='+ saberPagina() +',GENERO='+ generoMale() +'">male</a></p><p><a href="personajesSW.html?PAGINA='+ saberPagina() +',GENERO='+ generoFemale() +'">female</a></p><p><a href="personajesSW.html?PAGINA='+ saberPagina() +',GENERO='+ generoRobot() +'">n/a</a></p><p><a href="personajesSW.html?PAGINA='+ saberPagina() +',GENERO='+ generoHema() +'">Hemafrodita</a></p>', genero!=="todos" ? "<p><a href='personajesSW.html?PAGINA="+ saberPagina() +",GENERO="+ generoTodos() +"'>todos</a></p>": '</div>');   
 
-
-
-
-
-console.log(personajes.length);
-
-console.log(personajes[0]["name"]);
-
-console.log(saberPagina());
-console.log(page)
-console.log(location.search)
-
-let generos=[];
-
-generos=personajes.reduce(
-    (arrayG,personaje)=>{
-        if(arrayG.indexOf(personaje["gender"])<0){
-            arrayG.push(personaje["gender"]);
-        };
-        return arrayG;
-    },
-    generos
-);
-
-console.log(generos);
-
-/*
-for(let card of personajes){
-    document.write(
-    '<div class="col-sm-4"><h3>'+card.name+'</h3><p>Altura:'+card.height+'</p><p>Peso: '+card.mass+'</p><p>Color pelo: '+card.hair_color+'</p><p>Color piel: '+card.skin_color+'</p><p>Color ojos: '+card.eye_color+'</p><p>Fecha nacimiento: '+card.birth_year+'</p><p>Genero: '+card.gender+'</p><p>Mundo natal: <a href="'+card.homeworld+'">'+card.homeworld+'</a></p><p>Peliculas: <a href="'+card.films+'">'+card.films+'</a></p><p>Especie: '+card.species+'</p><p>Vehiculos: '+card.vehicles+'</p><p>Naves espacialies: '+card.starships+'</p></div>'
-    );*/
