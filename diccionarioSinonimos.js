@@ -2,13 +2,32 @@
 
 
 function DiccionarioDeSinonimos(){
+    //Creo el map connombre diccionarioSinonimos
     const diccionarioSinonimos = new Map([]);
+    //Creo función de agregarSinonimo que confirma si existe palabra en el map. 
+    //Si existe recupero con get la key palabra y pusheo el sinonimo. 
+    //Si no existe creo el valor en el map especificando que value es un array. 
     this.agregarSinonimo = function(palabra, sinonimo){
-        diccionarioSinonimos.has(palabra)?diccionarioSinonimos[palabra].push(sinonimo):diccionarioSinonimos.set(palabra,[sinonimo])    
+        diccionarioSinonimos.has(palabra) ? diccionarioSinonimos.get(palabra).push(sinonimo) : diccionarioSinonimos.set(palabra,[sinonimo])    
     };
+
+    //Creo función para sacar el valor de la key entregada. 
     this.obtenerSinonimos = function(palabraConsultar){
     return diccionarioSinonimos.get(palabraConsultar);
     }
+
+    this.eliminarSinonimo = function(palabraEliminarSinonimo, sinonimoAEliminar){
+        if (diccionarioSinonimos.has(palabraEliminarSinonimo)){
+            //AQUI ME FALTA EL CODIGO!!!!
+        }  
+    }
+
+    //Creo una funcion con la que al recibir la palabra a eliminar
+    this.eliminarPalabra = function(palabraEliminar){
+        diccionarioSinonimos.has(palabraEliminar) ? diccionarioSinonimos.delete(palabraEliminar) : console.log("La palabra no existe.");
+    }
+
+    //Esta es la llave de cierre del objeto/constructor/función DiccionarioDeSinonimos
 };
 
 const diccionario = new DiccionarioDeSinonimos();
