@@ -1,6 +1,7 @@
 // ALUMNO: ALBERT PÉREZ BALEYTO
 
 
+
 function DiccionarioDeSinonimos(){
     //Creo el map con nombre diccionarioSinonimos
     const diccionarioSinonimos = new Map([]);
